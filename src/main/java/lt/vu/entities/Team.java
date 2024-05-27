@@ -10,7 +10,8 @@ import java.util.Objects;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Team.findAll", query = "select t from Team as t")
+        @NamedQuery(name = "Team.findAll", query = "select t from Team as t"),
+        @NamedQuery(name = "Team.findByNameFragment", query = "SELECT t FROM Team t WHERE t.name LIKE :nameFragment")
 })
 @Table(name = "TEAM")
 @Getter @Setter

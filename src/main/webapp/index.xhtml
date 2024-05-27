@@ -18,10 +18,12 @@
     </h:form>
     <h:link outcome="myBatis/teams" value="MyBatis implementation"/>
     <pre>
+        #{pirmasKomponentas.sakykLabas()}
 
-    #{pirmasKomponentas.sakykLabas()}
+        #{pirmasKomponentas.getClass().name}
 
-    #{pirmasKomponentas.getClass().name}
+        #{transakcijaPirmas.performTransaction()}
+        <!-- #{System.out.println(TeamsDAO.loadBaltieji().name)} -->
     </pre>
 </h:body>
 </html>
