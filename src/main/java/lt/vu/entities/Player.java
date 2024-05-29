@@ -6,7 +6,10 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @NamedQueries({
@@ -34,6 +37,14 @@ public class Player implements Serializable {
     @Version
     @Column(name = "OPT_LOCK_VERSION")
     private Integer version;
+
+    @ManyToMany
+    @JoinTable(
+            name = "PLAYER_POSITION",
+            joinColumns = @JoinColumn(name = "PLAYER_ID"),
+            inverseJoinColumns = @JoinColumn(name = "POSITION_ID")
+    )
+    private List<Position> positions = new ArrayList<>();
 
     public Player() {
     }

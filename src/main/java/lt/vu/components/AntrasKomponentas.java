@@ -1,8 +1,9 @@
 package lt.vu.components;
 
-import javax.ejb.Stateless;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
-@Stateless
+@Named
+@RequestScoped
 public class AntrasKomponentas {
 }
