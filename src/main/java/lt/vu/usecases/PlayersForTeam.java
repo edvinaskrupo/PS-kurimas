@@ -4,12 +4,14 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.transaction.TransactionSynchronizationRegistry;
 import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.util.Map;
 
 import lombok.Getter;
 import lombok.Setter;
+import lt.vu.entities.Position;
 import lt.vu.interceptors.LoggedInvocation;
 import lt.vu.persistence.PlayersDAO;
 import lt.vu.persistence.TeamsDAO;
