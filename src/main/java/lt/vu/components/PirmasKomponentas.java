@@ -1,5 +1,8 @@
 package lt.vu.components;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
@@ -9,23 +12,30 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.transaction.TransactionSynchronizationRegistry;
 import javax.transaction.Transactional;
+import java.io.Serializable;
 import java.util.Date;
+import lt.vu.services.LabasService;
 
+@Getter
+@Setter
 @Named
 @SessionScoped // @RequestScoped
-public class PirmasKomponentas implements java.io.Serializable {
-    // @Inject - Field injection
+public class PirmasKomponentas implements Serializable, LabasService {
+    @Inject
     private AntrasKomponentas antras;
 
-    // Constructor injection
+    private String name;
+
+    /* Constructor injection
     @Inject
     public PirmasKomponentas(AntrasKomponentas antras) {
         this.antras = antras;
-    }
+    }*/
 
     @Resource
     private TransactionSynchronizationRegistry tx;
 
+    @Override
     public String sakykLabas() {
         return "Labas " + new Date() + " " + toString();
     }
@@ -39,6 +49,10 @@ public class PirmasKomponentas implements java.io.Serializable {
     @PreDestroy
     public void aboutToDie() {
         System.out.println(toString() + " ready to die.");
+    }
+
+    public void printName(String name) {
+        System.out.println("Your name is: " + name);
     }
 
 }

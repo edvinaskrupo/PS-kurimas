@@ -39,6 +39,21 @@ public class PlayersController {
         return Response.ok(playerDto).build();
     }
 
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Transactional
+    public Response add(
+            PlayerDto playerData) {
+
+        Player newPlayer = new Player();
+        newPlayer.setName(playerData.getName());
+        newPlayer.setJerseyNumber(playerData.getJerseyNumber());
+
+        playersDAO.persist(newPlayer);
+
+        return Response.ok().build();
+    }
+
     @Path("/{id}")
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
